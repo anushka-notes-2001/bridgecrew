@@ -34,7 +34,10 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve
 
+      - name: Install Bridgecrew CLI
+        run: npm install -g bridgecrew
+
       - name: Bridgecrew Scan
-        run: bridgecrew scan --api-key YOUR_API_KEY
+        run: bridgecrew scan --api-key ${{ secrets.BRIDGECREW_API_KEY }}
         env:
-          YOUR_API_KEY: ${{ secrets.BRIDGECREW_API_KEY }}
+          BRIDGECREW_API_KEY: ${{ secrets.BRIDGECREW_API_KEY }}
