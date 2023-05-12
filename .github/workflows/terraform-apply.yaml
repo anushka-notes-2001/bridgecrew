@@ -34,8 +34,11 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve
 
-      - name: Install Bridgecrew CLI
-        run: npm install -g bridgecrew
+      - name: Download and Install Bridgecrew CLI
+        run: |
+          curl -o bridgecrew https://bridgecrew-downloads.s3.amazonaws.com/cli/latest/bridgecrew-linux
+          chmod +x bridgecrew
+          sudo mv bridgecrew /usr/local/bin
 
       - name: Bridgecrew Scan
         run: bridgecrew scan --api-key ${{ secrets.BRIDGECREW_API_KEY }}
