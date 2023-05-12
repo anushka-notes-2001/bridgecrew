@@ -33,3 +33,8 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
+
+      - name: Bridgecrew Scan
+        run: bridgecrew scan --api-key YOUR_API_KEY
+        env:
+          YOUR_API_KEY: ${{ secrets.BRIDGECREW_API_KEY }}
