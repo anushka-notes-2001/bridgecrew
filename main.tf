@@ -18,7 +18,7 @@ terraform {
 
 # Provider Block
 provider "aws" {
-  region  = var.aws_region
+  region  = "us-east-1"
   access_key = "AKIAQJRVNPF2YWHBYTWI"
   secret_key = "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"
 }
