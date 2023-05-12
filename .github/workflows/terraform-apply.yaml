@@ -34,13 +34,11 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve
 
-      - name: Download and Install Bridgecrew CLI
-        run: |
-          curl -o bridgecrew https://bridgecrew-downloads.s3.amazonaws.com/cli/latest/bridgecrew-linux
-          chmod +x bridgecrew
-          sudo mv bridgecrew /usr/local/bin
+      - name: Checkout repo
+        uses: actions/checkout@v2
 
-      - name: Bridgecrew Scan
-        run: bridgecrew scan --api-key ${{ secrets.BRIDGECREW_API_KEY }}
-        env:
-          BRIDGECREW_API_KEY: ${{ secrets.BRIDGECREW_API_KEY }}
+      - name: Run Prisma Cloud 
+        id: Prisma Cloud
+        uses: bridgecrewio/checkov-action@master 
+        with:
+          api-key: ${{ secrets.BC_API_KEY }}
