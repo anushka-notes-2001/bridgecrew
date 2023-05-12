@@ -11,7 +11,7 @@ terraform {
   }
     backend "s3" {
     bucket         = "terraform-state-bridgecrew"
-    key            = "tftstate"
+    key            = "tftstate2"
     region         = "us-east-1"
   }
 }
