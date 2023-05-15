@@ -28,4 +28,6 @@ resource "aws_instance" "my_ec2" {
   tags = {
     Name = "example-instance"
   }
+  monitoring = true
+  ebs_optimized = true
 }
